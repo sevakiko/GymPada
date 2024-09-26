@@ -10226,10 +10226,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8856d180d0e0dc144b394b5e6d0c9387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  progress: 0
+  exerciseCode: 0
   moveSpeedForward: 3
   moveSpeedBackward: 1.5
   rotateSpeed: 100
   interactRange: 2
+  objects: []
+  cameraCtrl: {fileID: 330585545}
 --- !u!54 &989867358
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13751,6 +13755,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c336d4e0e461d374ba61ef54d607a7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newPlayerPosition: {x: 10, y: 10, z: 10}
+  newPlayerRotation: {x: 0, y: 0, z: 0, w: 0}
+  newCameraPosition: {x: 10, y: 10, z: 10}
+  newCameraRotation: {x: 0, y: 0, z: 0, w: 0}
+  code: 0
 --- !u!1001 &1274540868
 PrefabInstance:
   m_ObjectHideFlags: 0
