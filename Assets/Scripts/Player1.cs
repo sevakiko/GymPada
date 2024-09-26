@@ -2,9 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player1 : MonoBehaviour
 {
+
+    private void Start()
+    {
+        rbody = GetComponent<Rigidbody>();
+        
+    }
+
     private float moveSpeed = 0f;
+    private Rigidbody rbody;
 
     [SerializeField] private float moveSpeedForward = 3f;
     [SerializeField] private float moveSpeedBackward = 1.5f;
@@ -34,10 +43,12 @@ public class Player1 : MonoBehaviour
         if (Input.GetKey(KeyCode.D)){
             rotation = 1f;
         }
-
+        
         isWalkingForward = moveDirection <= 0f? false : true;
         isWalkingBackward = moveDirection >= 0f? false : true;
 
+        
+        
         // apply
         if (moveDirection != 0f){
             transform.Translate(Vector3.forward * moveDirection * moveSpeed * Time.deltaTime);
@@ -47,7 +58,7 @@ public class Player1 : MonoBehaviour
             transform.Rotate(Vector3.up, rotation * rotateSpeed * Time.deltaTime);
         }
     }
-
+    
     public bool IsWalkingForward(){
         return isWalkingForward;
     }
@@ -55,5 +66,4 @@ public class Player1 : MonoBehaviour
     public bool IsWalkingBackward(){
         return isWalkingBackward;
     }
-
 }
