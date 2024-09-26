@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+interface Interactable
+{
+    public void Interact();
+}
 
 public class Player1 : MonoBehaviour
 {
@@ -18,6 +22,7 @@ public class Player1 : MonoBehaviour
     [SerializeField] private float moveSpeedForward = 3f;
     [SerializeField] private float moveSpeedBackward = 1.5f;
     [SerializeField] private float rotateSpeed = 100f;
+    [SerializeField] private int interactRange = 2;
 
     private bool isWalkingForward;
     private bool isWalkingBackward;
@@ -43,7 +48,21 @@ public class Player1 : MonoBehaviour
         if (Input.GetKey(KeyCode.D)){
             rotation = 1f;
         }
-        
+
+        // interact
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Ray r = new Ray(transform.position, transform.forward);
+            if (Physics.Raycast(r, out RaycastHit hitInfo, interactRange))
+            {
+                if (hitInfo.collider.gameObject.TryGetComponent(out Interactable interactObj))
+                {
+                    print("interact :)");
+                    interactObj.Interact();
+                }
+            }
+        }
+
         isWalkingForward = moveDirection <= 0f? false : true;
         isWalkingBackward = moveDirection >= 0f? false : true;
 
@@ -66,4 +85,10 @@ public class Player1 : MonoBehaviour
     public bool IsWalkingBackward(){
         return isWalkingBackward;
     }
+
+
+   
+
+
+
 }
