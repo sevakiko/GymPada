@@ -11694,6 +11694,7 @@ MonoBehaviour:
   label: {fileID: 1113063096}
   cameraCtrl: {fileID: 330585545}
   isDoingExercise: 0
+  inDialogue: 0
   maxHealth: 100
   currentHealth: 100
   healthBar: {fileID: 1237483493}
@@ -11837,6 +11838,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 919132149077690985}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 287fbc951e07d884a8647c68cfc2c9d7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 919132149077690987}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 287fbc951e07d884a8647c68cfc2c9d7,
         type: 3}
       insertIndex: -1
@@ -15355,6 +15360,92 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1215949619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215949612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6758cb479050ea840a0eeabb04598754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - id: 0
+    sentences:
+    - 'Welcome to our Gym! '
+    - My name is Ortiz and I will your coach for today!
+    - How can I assist you?
+    options:
+    - optionText: I need your help.
+      nextDialogueId: 1
+    - optionText: 'Talk to you later. '
+      nextDialogueId: 4
+  - id: 1
+    sentences:
+    - Sure thing!
+    options:
+    - optionText: I want to improve my form.
+      nextDialogueId: 2
+    - optionText: Nevermind.
+      nextDialogueId: 4
+  - id: 2
+    sentences:
+    - 'I see.
+
+'
+    - "Whether you want to lose weight, gain muscle, increase endurance or improve
+      flexibility, \r\nit\u2019s important to have a clear purpose."
+    - "Set short-term, achievable milestones. \r\nFor example, aim to lose 1-2 pounds
+      a week or increase your strength gradually. "
+    - Don't expect overnight results.
+    - You should start with body weight exercises and lighter weights to learn the
+      proper form and prevent injuries.
+    - "I would recommend starting with cardiovascular exercise,known as cardio ,like
+      running, cycling, or rowing. \r\n"
+    - 'That helps with heart health, fat loss, and endurance. '
+    - "Then you can focus on compound movements like squats, deadlifts, \r                  
+      push-ups, and pull-ups, which work multiple muscle groups. "
+    - "And remember.. \r\nAlways start with a warmp up stretching before exercises."
+    - "Proper technique is more important than lifting heavy weights or doing endless
+      reps.\r"
+    - "Finally, alongside physical training, diet is very important too!\r"
+    options:
+    - optionText: Anything I can buy?
+      nextDialogueId: 3
+    - optionText: Thank you!
+      nextDialogueId: 4
+  - id: 3
+    sentences:
+    - 'Luckily for you, our shop has everything you may need!
+
+      Feel free to
+      browse at any time!'
+    options:
+    - optionText: Perfect!
+      nextDialogueId: 4
+    - optionText: 'Thank you. '
+      nextDialogueId: 4
+  - id: 4
+    sentences:
+    - "Don\u2019t hesitate to ask our gym staff or check the Player Manual.\r\n"
+    options: []
+--- !u!114 &1215949620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215949612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fc32f0d1b28cf045aa223942a78e37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueTrigger: {fileID: 1215949619}
+  dialogueId: 0
 --- !u!1001 &1224613886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17976,6 +18067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78afdaf1f64162747a80cb477b9d43c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 989867357}
   dialogueText: {fileID: 1619558703}
   optionTexts:
   - {fileID: 46316091}
@@ -23333,6 +23425,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1215949616}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 381bc8b65acb3d140be1a03ecb9f705d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1215949620}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 381bc8b65acb3d140be1a03ecb9f705d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1215949619}
   m_SourcePrefab: {fileID: 100100000, guid: 381bc8b65acb3d140be1a03ecb9f705d, type: 3}
 --- !u!1 &1934558872
 GameObject:
@@ -25622,8 +25722,8 @@ MonoBehaviour:
     - "If you\u2019re unsure about how to use equipment or perform exercises, don\u2019t
       hesitate to ask gym staff or check the <Player Manual>."
     options:
-    - optionText: 1
-      nextDialogueId: ...
+    - optionText: ...
+      nextDialogueId: 1
   - id: 1
     sentences:
     - Welcome to our Gym!
@@ -25716,6 +25816,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 4, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &919132149077690987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149077690981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fc32f0d1b28cf045aa223942a78e37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueTrigger: {fileID: 919132149077690984}
+  dialogueId: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

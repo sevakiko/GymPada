@@ -6,6 +6,7 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    [SerializeField] private Player1 player;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI[] optionTexts; // Array for displaying up to 5 options
     [SerializeField] private float textSpeed = 0.05f;
@@ -28,6 +29,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(DialogueTrigger npc, string dialogueId)
     {
         dialoguePanel.SetActive(true);
+        player.inDialogue = true;
         currentNpc = npc;
         currentDialogue = GetDialogueById(npc.dialogues, dialogueId);
 
@@ -124,6 +126,7 @@ public class DialogueManager : MonoBehaviour
         optionsDisplayed = false; // Reset options display flag
         currentNpc = null;  // Reset the current NPC
         currentDialogue = null;  // Reset the current dialogue
+        player.inDialogue = false;
         Debug.Log("End of Dialogue");
     }
 

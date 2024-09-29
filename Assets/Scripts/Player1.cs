@@ -8,6 +8,10 @@ interface Interactable1
     public void Interact(Player1 player);
 }
 
+interface NPC
+{
+    public void Interact(Player1 player);
+}
 
 public class Player1 : MonoBehaviour
 {
@@ -29,6 +33,7 @@ public class Player1 : MonoBehaviour
     private bool isWalkingForward;
     private bool isWalkingBackward;
     public bool isDoingExercise = false;
+    public bool inDialogue = false;
 
     private Vector3 tmpPosition;
     private Quaternion tmpRotation;
@@ -57,6 +62,12 @@ public class Player1 : MonoBehaviour
             exerciseLogic();
             return;
         }
+
+        // handle dialogue
+        if(inDialogue){
+            return;
+        }
+
 
         // movement forward - backward
         if (Input.GetKey(KeyCode.W)){
@@ -140,7 +151,15 @@ public class Player1 : MonoBehaviour
         Ray r = new Ray(transform.position, transform.forward);
         if (Physics.Raycast(r, out RaycastHit hitInfo, interactRange))
         {
-            if (hitInfo.collider.gameObject.TryGetComponent(out Interactable1 interactObj1))
+            if (hitInfo.collider.gameObject.TryGetComponent(out NPC npc))
+            {
+                label.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.E)){
+                    label.SetActive(false);
+                    npc.Interact(this);
+                }
+            }
+            else if (hitInfo.collider.gameObject.TryGetComponent(out Interactable1 interactObj1))
             {
                 label.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E)){
