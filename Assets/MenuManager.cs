@@ -1,22 +1,35 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour
+public class MenuController1 : MonoBehaviour
 {
-    public GameObject menuUI; // Assign your menu UI GameObject in the Inspector
+    // Reference to the Menu GameObject
+    public GameObject menu;
 
-    private bool isMenuOpen = false;
-
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
+        // Check if the ESC key is pressed
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            // Toggle the menu's visibility
             ToggleMenu();
         }
     }
 
-    private void ToggleMenu()
+    // Toggle the menu's visibility
+    void ToggleMenu()
     {
-        isMenuOpen = !isMenuOpen;
-        menuUI.SetActive(isMenuOpen);
+        // Check if the menu is currently visible
+        if (menu.activeSelf)
+        {
+            // Hide the menu
+            menu.SetActive(false);
+        }
+        else
+        {
+            // Show the menu
+            menu.SetActive(true);
+        }
     }
 }
