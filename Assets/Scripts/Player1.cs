@@ -4,8 +4,8 @@ using UnityEngine;
 
 interface Interactable
 {
-    public int getCode();
-    public void Interact(Player1 player);
+    int getCode();
+    void Interact(Player1 player);
 }
 
 public class Player1 : MonoBehaviour
@@ -31,7 +31,15 @@ public class Player1 : MonoBehaviour
     private Vector3 tmpPosition;
     private Quaternion tmpRotation;
     private int tmpCode;
-    
+
+    public float maxHealth = 100;
+    public float currentHealth;
+    public HealthBar healthBar;
+
+    public float maxProgress = 100;
+    public float currentProgress;
+    public ProgressBar progressBar;
+
     private void Start() {
         animator = GetComponent<Animator>();
         foreach(GameObject go in objects){
@@ -113,6 +121,10 @@ public class Player1 : MonoBehaviour
         if (rotation != 0f){
             transform.Rotate(Vector3.up, rotation * rotateSpeed * Time.deltaTime);
         }
+
+        Debug.Log(currentHealth);
+        Debug.Log(currentProgress);
+        currentHealth -= 0.5f * Time.deltaTime;
     }
     
     public bool IsWalkingForward(){
