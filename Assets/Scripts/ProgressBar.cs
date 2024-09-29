@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
     public Slider slider;
-    public Gradient gradient;
 
     public void SetMaxProgress(float progress)
     {

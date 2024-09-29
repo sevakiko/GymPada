@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-interface Interactable
+interface Interactable1
 {
-    int getCode();
-    void Interact(Player1 player);
+    public int getCode();
+    public void Interact(Player1 player);
 }
+
 
 public class Player1 : MonoBehaviour
 {
-    private string[] exerciseText = {"Bicep Curl"};
+    private string[] exerciseText = {"Bicep Curl", "Squat", "Jog"};
 
     private float moveSpeed = 0f;
 
@@ -20,13 +21,13 @@ public class Player1 : MonoBehaviour
     [SerializeField] private float moveSpeedBackward = 1.5f;
     [SerializeField] private float rotateSpeed = 100f;
     [SerializeField] private int interactRange = 2;
-    [SerializeField] private GameObject[] objects;
+    [SerializeField] public GameObject[] objects;
     [SerializeField] public Camera cameraCtrl;
     private Animator animator;
 
     private bool isWalkingForward;
     private bool isWalkingBackward;
-    private bool isDoingExercise = false;
+    public bool isDoingExercise = false;
 
     private Vector3 tmpPosition;
     private Quaternion tmpRotation;
@@ -42,9 +43,7 @@ public class Player1 : MonoBehaviour
 
     private void Start() {
         animator = GetComponent<Animator>();
-        foreach(GameObject go in objects){
-            go.SetActive(false);
-        }
+        resetObjectVisibile();
     }
 
     private void Update()
@@ -54,25 +53,7 @@ public class Player1 : MonoBehaviour
 
         // handle exercise
         if(isDoingExercise){
-
-            if (Input.GetKeyDown(KeyCode.Space)){
-                progress += 10f;
-            }
-
-            if(progress > 0.2){
-                progress = progress - 0.2f;
-            }
-
-            if (Input.GetKeyDown(KeyCode.E)){
-                progress = 0;
-                exerciseCode = 0;
-                transform.position = tmpPosition;
-                //setObjectVisible(tmpCode, false);
-                cameraCtrl.GetComponent<Player1Camera>().enabled = true;
-                isDoingExercise = false;
-                animator.SetTrigger("Idle");
-            }
-
+            exerciseLogic();
             return;
         }
 
@@ -96,23 +77,12 @@ public class Player1 : MonoBehaviour
 
         // interact
         if (Input.GetKeyDown(KeyCode.E)){
-            Ray r = new Ray(transform.position, transform.forward);
-            if (Physics.Raycast(r, out RaycastHit hitInfo, interactRange))
-            {
-                if (hitInfo.collider.gameObject.TryGetComponent(out Interactable interactObj))
-                {
-                    tmpPosition = transform.position;
-                    tmpRotation = transform.rotation;
-                    tmpCode = interactObj.getCode();
-                    animator.SetTrigger(exerciseText[tmpCode]);
-                    interactObj.Interact(this);
-                }
-            }
+            interactLogic();
         }
 
         isWalkingForward = moveDirection <= 0f? false : true;
         isWalkingBackward = moveDirection >= 0f? false : true;
-        
+
         // apply
         if (moveDirection != 0f){
             transform.Translate(Vector3.forward * moveDirection * moveSpeed * Time.deltaTime);
@@ -122,10 +92,15 @@ public class Player1 : MonoBehaviour
             transform.Rotate(Vector3.up, rotation * rotateSpeed * Time.deltaTime);
         }
 
-
-        currentHealth -= 0.5f * Time.deltaTime;
+        //Debug.Log(currentHealth);
+        //Debug.Log(currentProgress);
+        if (currentHealth >= 0)
+        {
+            currentHealth -= 1f * Time.deltaTime;
+            healthBar.SetHealth(currentHealth);
+        }
     }
-    
+
     public bool IsWalkingForward(){
         return isWalkingForward;
     }
@@ -141,9 +116,50 @@ public class Player1 : MonoBehaviour
     public void setObjectVisible(int idx, bool set){
         objects[idx].SetActive(set);
     }
+
+    private void resetObjectVisibile(){
+        foreach(GameObject go in objects){
+            go.SetActive(false);
+        }
+    }
    
     public void setExerciseCode(int code){
         exerciseCode = code;
+    }
+
+    private void interactLogic(){
+        Ray r = new Ray(transform.position, transform.forward);
+        if (Physics.Raycast(r, out RaycastHit hitInfo, interactRange))
+            {
+                if (hitInfo.collider.gameObject.TryGetComponent(out Interactable1 interactObj1))
+                {
+                    tmpPosition = transform.position;
+                    tmpRotation = transform.rotation;
+                    tmpCode = interactObj1.getCode();
+                    animator.SetTrigger(exerciseText[tmpCode - 1]);
+                    interactObj1.Interact(this);
+                }
+            }
+    }
+
+    private void exerciseLogic(){
+        if (Input.GetKeyDown(KeyCode.Space)){
+            progress += 10f;
+        }
+
+        if(progress >= 0.2){
+             progress = progress - 0.2f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E)){
+            progress = 0;
+            exerciseCode = 0;
+            transform.position = tmpPosition;
+            resetObjectVisibile();
+            cameraCtrl.GetComponent<Player1Camera>().enabled = true;
+            isDoingExercise = false;
+            animator.SetTrigger("Idle");
+        }
     }
 
 }
