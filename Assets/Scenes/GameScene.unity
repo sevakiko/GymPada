@@ -11585,6 +11585,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 919132149077690982}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 287fbc951e07d884a8647c68cfc2c9d7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 919132149077690985}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 287fbc951e07d884a8647c68cfc2c9d7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 919132149077690984}
   m_SourcePrefab: {fileID: 100100000, guid: 287fbc951e07d884a8647c68cfc2c9d7, type: 3}
 --- !u!1 &1005469946
 GameObject:
@@ -24656,6 +24664,118 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &919132149077690984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149077690981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6758cb479050ea840a0eeabb04598754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - id: 0
+    sentences:
+    - "If you\u2019re unsure about how to use equipment or perform exercises, don\u2019t
+      hesitate to ask gym staff or check the <Player Manual>."
+    options:
+    - optionText: 1
+      nextDialogueId: ...
+  - id: 1
+    sentences:
+    - Welcome to our Gym!
+    - My name is Anna and I will be you coach for today!
+    - How can I assist you?
+    options:
+    - optionText: I need your help.
+      nextDialogueId: 2
+    - optionText: Thank you, talk to you later.
+      nextDialogueId: 0
+  - id: 2
+    sentences:
+    - Sure thing!
+    options:
+    - optionText: I want to improve my physical health.
+      nextDialogueId: 3.1
+    - optionText: I want to improve my diet.
+      nextDialogueId: 3.2
+    - optionText: Nevermind.
+      nextDialogueId: 0
+  - id: 3.1
+    sentences:
+    - I see.
+    - "Whether you want to lose weight, gain muscle, increase endurance, or improve
+      flexibility, it\u2019s important to have a clear purpose."
+    - Set short-term, achievable milestones. For example, aim to lose 1-2 pounds
+      a week or increase your strength gradually. Don't expect overnight results.
+    - "You should start with bodyweight exercises and lighter weights to learn the
+      proper form. This helps prevent injuries and ensures you\u2019re targeting
+      the right muscles.\r"
+    - "I would recommend starting with cardiovascular exercise,known as cardio ,like
+      running, cycling, or rowing. That helps with heart health, fat loss, and endurance.
+      \r\r"
+    - "Then you can focus on compound movements like squats, deadlifts, push-ups,
+      and pull-ups, which work multiple muscle groups. \r\r\r"
+    - "And remember.. \nAlways start with a warmp up stretching before starting and
+      performing exercises with proper technique is more important than lifting heavy
+      weights or doing endless reps.\r\r\r\r"
+    - "Finally, alongside physical training, diet is very important too!\r\r\r\r"
+    options:
+    - optionText: Wow! Thank you very much for the information! What advice do you
+        have about diet?
+      nextDialogueId: 3.2
+    - optionText: Thank you, that's more than enough information for now.
+      nextDialogueId: 0
+  - id: 3.2
+    sentences:
+    - Proper nutrition and hydration are key factors for better health!
+    - Drink plenty of water before, during, and after workouts to stay hydrated and
+      maintain performance.
+    - Make sure you are having fuel for your body by eating a balanced diet with
+      adequate protein, healthy fats, and carbohydrates to support your workouts.
+    - Such food are fruits, lean meat like chicken,turkey, lean cuts of beef or pork,
+      eggs, dairy products and salad!
+    - For faster results you can add protein supplements in your diet!
+    options:
+    - optionText: Sounds good! Do you know where I can find some protein?
+      nextDialogueId: 4
+    - optionText: Thank you very much for your guidance!
+      nextDialogueId: 0
+    - optionText: I am not sure...
+      nextDialogueId: 0
+  - id: 4
+    sentences:
+    - Luckily for you, our shop has everything you may need! Make sure you read each
+      product's description.
+    options:
+    - optionText: 'Perfect! '
+      nextDialogueId: 0
+    - optionText: Thank you.
+      nextDialogueId: 0
+--- !u!65 &919132149077690985
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149077690981}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 4, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
