@@ -25719,82 +25719,52 @@ MonoBehaviour:
   dialogues:
   - id: 0
     sentences:
-    - "If you\u2019re unsure about how to use equipment or perform exercises, don\u2019t
-      hesitate to ask gym staff or check the <Player Manual>."
-    options:
-    - optionText: ...
-      nextDialogueId: 1
-  - id: 1
-    sentences:
-    - Welcome to our Gym!
-    - My name is Anna and I will be you coach for today!
+    - "Welcome to our Gym! \r\n"
+    - My name is Anna and I will be you dietitian for today!
     - How can I assist you?
     options:
     - optionText: I need your help.
-      nextDialogueId: 2
-    - optionText: Thank you, talk to you later.
-      nextDialogueId: 0
-  - id: 2
-    sentences:
-    - Sure thing!
-    options:
-    - optionText: I want to improve my physical health.
-      nextDialogueId: 3.1
-    - optionText: I want to improve my diet.
-      nextDialogueId: 3.2
+      nextDialogueId: 1
     - optionText: Nevermind.
-      nextDialogueId: 0
-  - id: 3.1
+      nextDialogueId: 4
+  - id: 1
     sentences:
-    - I see.
-    - "Whether you want to lose weight, gain muscle, increase endurance, or improve
-      flexibility, it\u2019s important to have a clear purpose."
-    - Set short-term, achievable milestones. For example, aim to lose 1-2 pounds
-      a week or increase your strength gradually. Don't expect overnight results.
-    - "You should start with bodyweight exercises and lighter weights to learn the
-      proper form. This helps prevent injuries and ensures you\u2019re targeting
-      the right muscles.\r"
-    - "I would recommend starting with cardiovascular exercise,known as cardio ,like
-      running, cycling, or rowing. That helps with heart health, fat loss, and endurance.
-      \r\r"
-    - "Then you can focus on compound movements like squats, deadlifts, push-ups,
-      and pull-ups, which work multiple muscle groups. \r\r\r"
-    - "And remember.. \nAlways start with a warmp up stretching before starting and
-      performing exercises with proper technique is more important than lifting heavy
-      weights or doing endless reps.\r\r\r\r"
-    - "Finally, alongside physical training, diet is very important too!\r\r\r\r"
+    - 'Sure thing!
+
+'
     options:
-    - optionText: Wow! Thank you very much for the information! What advice do you
-        have about diet?
-      nextDialogueId: 3.2
-    - optionText: Thank you, that's more than enough information for now.
-      nextDialogueId: 0
-  - id: 3.2
+    - optionText: I want to improve my diet.
+      nextDialogueId: 2
+    - optionText: Nevermind
+      nextDialogueId: 4
+  - id: 2
     sentences:
     - Proper nutrition and hydration are key factors for better health!
     - Drink plenty of water before, during, and after workouts to stay hydrated and
       maintain performance.
     - Make sure you are having fuel for your body by eating a balanced diet with
-      adequate protein, healthy fats, and carbohydrates to support your workouts.
+      adequate protein and healthy fats to support your workouts.
     - Such food are fruits, lean meat like chicken,turkey, lean cuts of beef or pork,
       eggs, dairy products and salad!
     - For faster results you can add protein supplements in your diet!
     options:
-    - optionText: Sounds good! Do you know where I can find some protein?
+    - optionText: Anything that helps?
+      nextDialogueId: 3
+    - optionText: Thank you!
       nextDialogueId: 4
-    - optionText: Thank you very much for your guidance!
-      nextDialogueId: 0
-    - optionText: I am not sure...
-      nextDialogueId: 0
-  - id: 4
+  - id: 3
     sentences:
     - Luckily for you, our shop has everything you may need! Make sure you read each
       product's description.
     options:
     - optionText: 'Perfect! '
-      nextDialogueId: 0
+      nextDialogueId: 4
     - optionText: Thank you.
-      nextDialogueId: 0
+      nextDialogueId: 4
+  - id: 4
+    sentences:
+    - "Don\u2019t hesitate to ask our gym staff or check the Player Manual."
+    options: []
 --- !u!65 &919132149077690985
 BoxCollider:
   m_ObjectHideFlags: 0
