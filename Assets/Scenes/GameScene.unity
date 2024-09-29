@@ -11002,10 +11002,10 @@ MonoBehaviour:
   cameraCtrl: {fileID: 330585545}
   maxHealth: 100
   currentHealth: 0
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 1237483493}
   maxProgress: 100
   currentProgress: 0
-  progressBar: {fileID: 0}
+  progressBar: {fileID: 1426205564}
 --- !u!54 &989867358
 Rigidbody:
   m_ObjectHideFlags: 0
