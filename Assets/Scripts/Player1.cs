@@ -22,6 +22,7 @@ public class Player1 : MonoBehaviour
     [SerializeField] private float rotateSpeed = 100f;
     [SerializeField] private int interactRange = 2;
     [SerializeField] public GameObject[] objects;
+    [SerializeField] public GameObject label;
     [SerializeField] public Camera cameraCtrl;
     private Animator animator;
 
@@ -76,9 +77,7 @@ public class Player1 : MonoBehaviour
         }
 
         // interact
-        if (Input.GetKeyDown(KeyCode.E)){
-            interactLogic();
-        }
+        interactLogic();
 
         isWalkingForward = moveDirection <= 0f? false : true;
         isWalkingBackward = moveDirection >= 0f? false : true;
@@ -99,6 +98,8 @@ public class Player1 : MonoBehaviour
             currentHealth -= 1f * Time.deltaTime;
             healthBar.SetHealth(currentHealth);
         }
+
+        //checkForPressE();
     }
 
     public bool IsWalkingForward(){
@@ -127,12 +128,31 @@ public class Player1 : MonoBehaviour
         exerciseCode = code;
     }
 
+    /*private void checkForPressE(){
+        Ray r = new Ray(transform.position, transform.forward);
+        if (Physics.Raycast(r, out RaycastHit hitInfo, interactRange)){
+            label.SetActive(true);
+        }
+        label.SetActive(false);
+    }*/
+
     private void interactLogic(){
         Ray r = new Ray(transform.position, transform.forward);
         if (Physics.Raycast(r, out RaycastHit hitInfo, interactRange))
+        {
+            if (hitInfo.collider.gameObject.TryGetComponent(out Interactable1 interactObj1))
             {
-                if (hitInfo.collider.gameObject.TryGetComponent(out Interactable1 interactObj1))
-                {
+                label.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.E)){
+                    if (currentProgress <= maxProgress){
+                        currentProgress += 10f;
+                        progressBar.SetProgress(currentProgress);
+                    }
+                    if (currentHealth <= maxHealth){
+                        currentHealth += 10f;
+                        healthBar.SetHealth(currentHealth);
+                    }
+                    label.SetActive(false);
                     tmpPosition = transform.position;
                     tmpRotation = transform.rotation;
                     tmpCode = interactObj1.getCode();
@@ -140,6 +160,10 @@ public class Player1 : MonoBehaviour
                     interactObj1.Interact(this);
                 }
             }
+        }
+        else{
+            label.SetActive(false);
+        }
     }
 
     private void exerciseLogic(){
