@@ -81,12 +81,12 @@ public class Player1 : MonoBehaviour
             moveDirection = 1f;
             moveSpeed = moveSpeedForward;
         }
-        if (Input.GetKey(KeyCode.S)){ 
+        if (Input.GetKey(KeyCode.S)){
             moveDirection = -1f;
             moveSpeed = moveSpeedBackward;
         }
 
-        // rotation left - right 
+        // rotation left - right
         if (Input.GetKey(KeyCode.A)){
             rotation = -1f;
         }
@@ -112,7 +112,7 @@ public class Player1 : MonoBehaviour
 
         isWalkingForward = moveDirection <= 0f? false : true;
         isWalkingBackward = moveDirection >= 0f? false : true;
-        
+
         // apply
         if (moveDirection != 0f){
             transform.Translate(Vector3.forward * moveDirection * moveSpeed * Time.deltaTime);
@@ -130,7 +130,7 @@ public class Player1 : MonoBehaviour
             healthBar.SetHealth(currentHealth);
         }
     }
-    
+
     public bool IsWalkingForward(){
         return isWalkingForward;
     }
@@ -146,7 +146,7 @@ public class Player1 : MonoBehaviour
     public void setObjectVisible(int idx, bool set){
         objects[idx].SetActive(set);
     }
-   
+
     public void setExerciseCode(int code){
         exerciseCode = code;
     }
