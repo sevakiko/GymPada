@@ -122,8 +122,7 @@ public class Player1 : MonoBehaviour
             transform.Rotate(Vector3.up, rotation * rotateSpeed * Time.deltaTime);
         }
 
-        Debug.Log(currentHealth);
-        Debug.Log(currentProgress);
+
         currentHealth -= 0.5f * Time.deltaTime;
     }
     
