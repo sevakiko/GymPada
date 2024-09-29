@@ -340,7 +340,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 36d16a4ae14d5b947ae85a24128aac73, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
         m_Mode: 1
@@ -406,11 +406,9 @@ MonoBehaviour:
   weightInput: {fileID: 2138893020}
   calculateButton: {fileID: 166314472}
   bmiText: {fileID: 0}
-  plan1: {fileID: 0}
-  plan2: {fileID: 0}
-  plan3: {fileID: 0}
-  plan4: {fileID: 0}
-  plan5: {fileID: 0}
+  plan1Scene: 
+  plan2Scene: 
+  plan3Scene: 
 --- !u!1 &171159808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,11 +1995,9 @@ MonoBehaviour:
   weightInput: {fileID: 2138893020}
   calculateButton: {fileID: 166314472}
   bmiText: {fileID: 0}
-  plan1: {fileID: 0}
-  plan2: {fileID: 0}
-  plan3: {fileID: 0}
-  plan4: {fileID: 0}
-  plan5: {fileID: 0}
+  plan1Scene: 
+  plan2Scene: 
+  plan3Scene: 
 --- !u!1 &1672194501
 GameObject:
   m_ObjectHideFlags: 0
@@ -2525,11 +2521,9 @@ MonoBehaviour:
   weightInput: {fileID: 2138893020}
   calculateButton: {fileID: 166314472}
   bmiText: {fileID: 0}
-  plan1: {fileID: 0}
-  plan2: {fileID: 0}
-  plan3: {fileID: 0}
-  plan4: {fileID: 0}
-  plan5: {fileID: 0}
+  plan1Scene: 
+  plan2Scene: 
+  plan3Scene: 
 --- !u!1 &2144255060
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BMICalculator : MonoBehaviour
 {
@@ -8,11 +9,9 @@ public class BMICalculator : MonoBehaviour
     public TMP_InputField weightInput;
     public Button calculateButton;
     public Text bmiText;
-    public GameObject plan1;
-    public GameObject plan2;
-    public GameObject plan3;
-    public GameObject plan4;
-    public GameObject plan5;
+    public string plan1Scene;
+    public string plan2Scene;
+    public string plan3Scene;
 
     private float height;
     private float weight;
@@ -39,7 +38,6 @@ public class BMICalculator : MonoBehaviour
         //bmiText.text = "Your BMI is: " + bmi.ToString("F2");
         Debug.Log("Your BMI is: " + bmi);
 
-
         // Log the input values
         Debug.Log("Height: " + height);
         Debug.Log("Weight: " + weight);
@@ -47,23 +45,15 @@ public class BMICalculator : MonoBehaviour
         // Determine the exercise plan
         if (bmi < 18.5)
         {
-            plan1.SetActive(true);
-            plan2.SetActive(false);
-            plan3.SetActive(false);
+            SceneManager.LoadScene(10);
         }
         else if (bmi >= 18.5 && bmi <= 29.9)
         {
-            plan1.SetActive(false);
-            plan2.SetActive(true);
-            plan3.SetActive(false);
+            SceneManager.LoadScene(11);
         }
-        else if (bmi >= 30 )
+        else if (bmi >= 30)
         {
-            plan1.SetActive(false);
-            plan2.SetActive(false);
-            plan3.SetActive(true);
+            SceneManager.LoadScene(12);
         }
-        
-        
     }
 }
