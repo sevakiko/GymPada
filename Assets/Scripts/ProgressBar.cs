@@ -12,7 +12,7 @@ public class ProgressBar : MonoBehaviour
         slider.maxValue = progress;
         slider.value = progress;
     }
-    public void SetHealth(float progress)
+    public void SetProgress(float progress)
     {
         slider.value = progress;
     }
