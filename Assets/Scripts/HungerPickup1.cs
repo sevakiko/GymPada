@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class HungerPickup1 : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other, Player1 player)
+    private void OnTriggerStay(Collider other, Player1 player)
     {
 
         float currentHealth = player.currentHealth;
-        if (other.CompareTag("Player1"))
+        if (other.CompareTag("Player"))
         {
+
             if(Input.GetKeyDown(KeyCode.E))
             {
                 if (currentHealth == player.maxHealth)
                 {
-                    currentHealth -= 10f;
+                    if (currentHealth >= 0)
+                    {
+                        currentHealth -= 10f;
+                    }
                 }
                 
             }
