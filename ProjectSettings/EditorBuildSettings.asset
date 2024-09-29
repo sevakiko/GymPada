@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ShopItem6.unity
     guid: 5ee634b62f0b1904e930d1530a9f531d
+  - enabled: 1
+    path: Assets/Scenes/DietPlans.unity
+    guid: 409976dca7fc28440a3512e0ee1d2706
   m_configObjects: {}
